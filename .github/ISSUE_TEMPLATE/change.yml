@@ -1,0 +1,143 @@
+name: 変更提案
+description: 機能、要求、仕様、設計、セキュリティ、運用、プロセスの変更を提案します
+title: "[Change]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        実装の依頼ではなく、解決したい問題と検証可能な成果を定義します。
+        secret、個人情報、private URL、raw logは入力しないでください。
+
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: 変更区分
+      options:
+        - Product
+        - Requirement
+        - Specification
+        - Architecture
+        - Security
+        - Process
+        - Operation
+        - Documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 解決したい問題
+      description: 誰が、何に困っていて、なぜ今扱う必要があるかを記載してください。
+      placeholder: 現在の問題と影響を、観測できた事実と推測に分けて記載します。
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 根拠
+      description: 現行コード、画面、ログを秘匿化した要約、関連Issueなどを記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: 期待する成果
+      description: 実装方法ではなく、完了後に利用者または運用者が得られる状態を記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_docs
+    attributes:
+      label: 現行文書との関係
+      description: 関連する文書と節を記載してください。
+      placeholder: |
+        - docs/product.md:
+        - docs/requirements.md:
+        - docs/specifications/...:
+        - docs/architecture.md:
+        - docs/security.md:
+        - docs/decisions/...:
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 対象範囲
+      description: このIssueで変更するものを記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: 対象外
+      description: このIssueでは変更しないものを明示してください。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: docs_impact
+    attributes:
+      label: ドキュメント影響
+      options:
+        - DOC_UPDATE_REQUIRED
+        - NO_DOC_CHANGE
+    validations:
+      required: true
+
+  - type: textarea
+    id: docs_plan
+    attributes:
+      label: 文書更新計画または不要理由
+      description: 更新する正本のパス、またはNO_DOC_CHANGEである具体的な理由を記載してください。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: decision_impact
+    attributes:
+      label: Decision Record
+      options:
+        - DR_REQUIRED
+        - DR_NOT_REQUIRED
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      description: 第三者がYes/Noで確認できる条件を箇条書きにしてください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: 検証方法
+      description: test、build、画面確認、運用確認などを記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: 依存関係・重複候補
+      description: 先に完了すべきIssue、関連Pull Request、重複候補を記載してください。なければ「なし」と記載します。
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: 確認
+      options:
+        - label: secret、個人情報、private URL、raw logを記載していません。
+          required: true
+        - label: このIssueの作成だけでは実装開始を承認したことにならないと理解しています。
+          required: true
